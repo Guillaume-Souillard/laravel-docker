@@ -1,4 +1,4 @@
-FROM php:7.4.26-alpine3.13
+FROM php:7.4.26-alpine3.14
 
 # Install dev dependencies
 RUN apk add --no-cache --virtual .build-deps \
@@ -83,7 +83,7 @@ RUN composer global require "squizlabs/php_codesniffer=*"
 # Cleanup dev dependencies
 RUN apk del -f .build-deps
 
-RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted gnu-libiconv
+RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.13/community/ gnu-libiconv=1.15-r3
 ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so php
 
 # Setup working directory
